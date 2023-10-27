@@ -13,6 +13,7 @@
                 </div>
                 <form action="{{ url('/jabatan', $jabatan->id) }}" method="post">
                     @csrf
+                    @method('put')
                     <div class="mb-3">
                       <label class="form-label">Nama Jabatan</label>
                       <input value="{{ $jabatan->nama }}" type="text" class="form-control" name="nama" placeholder="masukan nama jabatan">

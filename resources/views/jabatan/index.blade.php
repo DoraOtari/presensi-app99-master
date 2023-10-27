@@ -12,7 +12,7 @@
                     <h4 ><i class="bi-diagram-2"></i> Data Jabatan</h4>
                     <a href="{{ url('/jabatan/create') }}" class="btn btn-light shadow-sm rounded-pill border-dark"><i class="bi-plus"></i> Create</a>
                 </div>
-                <table class="table mt-3 table-hover">
+                <table id="tabelku" class="table mt-3 table-hover">
                     <thead>
                         <tr>
                             <th>No</th>

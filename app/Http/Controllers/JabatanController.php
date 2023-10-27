@@ -75,7 +75,13 @@ class JabatanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('jabatan')->where('id', $id)->update([
+            'nama' => $request->nama,
+            'gaji' => $request->gaji,
+            'status' => $request->status,
+           ]);
+
+           return redirect('/jabatan')->with('notif', 'Berhasil update   jabatan baru'); //kode kembali ke hal sebelumnya
     }
 
     /**

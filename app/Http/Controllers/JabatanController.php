@@ -62,7 +62,8 @@ class JabatanController extends Controller
      */
     public function edit($id)
     {
-        return view('jabatan.edit');
+        $jabatan = DB::table('jabatan')->find($id);
+        return view('jabatan.edit', compact('jabatan'));
     }
 
     /**

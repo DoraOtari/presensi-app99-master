@@ -19,7 +19,8 @@
                             <th>Nama</th>
                             <th>Status</th>
                             <th>Gaji</th>
-                            <th>Aksi</th>
+                            <th>Edit</th>
+                            <th>Hapus</th>
                         </tr>
                     </thead>
                     <tbody class="table-group-divider">
@@ -30,7 +31,7 @@
                             <td>{{ $item->status }}</td>
                             <td>Rp. {{ number_format($item->gaji,0,',','.') }}</td>
                             <td>
-                                <a href="{{ url('jabatan',$item->id) }}" class="btn btn-outline-primary">
+                                <a href="{{ url('jabatan/'.$item->id.'/edit') }}" class="btn btn-outline-primary">
                                     <i class="bi-pen"></i>
                                 </a>
                             </td>

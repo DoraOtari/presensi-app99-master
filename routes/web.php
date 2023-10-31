@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Livewire\Karyawan\Create;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 /*
@@ -44,3 +46,5 @@ Route::post('profil', function(){
 });
 
 Route::resource('jabatan', JabatanController::class);
+Route::get('/karyawan/buat', Create::class);
+Route::resource('/karyawan',KaryawanController::class);

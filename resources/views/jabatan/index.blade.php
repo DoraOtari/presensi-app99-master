@@ -8,7 +8,7 @@
         @endif
         <div class="card shadow border-secondary rounded-5">
             <div class="card-body">
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between mb-3">
                     <h4 ><i class="bi-diagram-2"></i> Data Jabatan</h4>
                     <a href="{{ url('/jabatan/create') }}" class="btn btn-light shadow-sm rounded-pill border-dark"><i class="bi-plus"></i> Create</a>
                 </div>

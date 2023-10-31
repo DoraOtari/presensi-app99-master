@@ -39,7 +39,7 @@
 
             </ul>
             <div id="profil" class="d-flex gap-2">
-              <img src="{{ asset('storage/'.Auth::user()->foto_profil) }}" class="img-thumbnail" style="width: 40px; border-radius:50%; aspect-ratio:1/1" >
+              <img src="{{ asset('image/'.Auth::user()->foto_profil) }}" class="img-thumbnail" style="width: 40px; border-radius:50%; aspect-ratio:1/1" >
               <div class="dropdown me-3">
                 <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                   {{ Auth::user()->name }}

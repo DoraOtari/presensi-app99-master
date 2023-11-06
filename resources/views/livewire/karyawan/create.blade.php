@@ -77,8 +77,8 @@
                 </div>
                 {{-- bs5-form-textarea --}}
                 <div class="mb-3">
-                  <label for="jalan" class="form-label">Jalan</label>
-                  <textarea class="form-control" name="jalan" id="jalan" rows="3"></textarea>
+                  <label for="alamat" class="form-label">Alamat</label>
+                  <textarea class="form-control" name="alamat" id="alamat" rows="3"></textarea>
                 </div>
                 {{-- bs5-form-submit --}}
                 <button type="submit" class="btn btn-primary">Submit</button>

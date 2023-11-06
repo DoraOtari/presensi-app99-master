@@ -14,7 +14,7 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        //
+        return view('karyawan.index',['karyawan' => Karyawan::all()]);
     }
 
     /**
@@ -44,7 +44,7 @@ class KaryawanController extends Controller
             "user_id" => $request->user_id,
             "provinsi" => $request->provinsi,
             "kota" => $request->kota,
-            "jalan" => $request->jalan,
+            "alamat" => $request->alamat,
         ]);
         return redirect('karyawan')->with('pesan', "berhasil tambah karyawan $request->nama");
     }

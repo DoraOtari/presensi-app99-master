@@ -35,7 +35,18 @@ class KaryawanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Karyawan::create([
+            "nik" => $request->nik,
+            "nama" => $request->nama,
+            "tgl_lahir" => $request->tgl_lahir,
+            "kelamin" => $request->kelamin,
+            "jabatan_id" => $request->jabatan_id,
+            "user_id" => $request->user_id,
+            "provinsi" => $request->provinsi,
+            "kota" => $request->kota,
+            "jalan" => $request->jalan,
+        ]);
+        return redirect('karyawan')->with('pesan', "berhasil tambah karyawan $request->nama");
     }
 
     /**

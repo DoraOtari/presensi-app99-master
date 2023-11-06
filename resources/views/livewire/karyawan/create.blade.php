@@ -5,6 +5,7 @@
                <i class="bi-person"></i> Karyawan
             </h4>
             <form action="{{ url('karyawan') }}" method="post">
+                @csrf
                 <div class="mb-3">
                   <label class="form-label badge bg-primary">NIK</label>
                   <input value="{{ $nik }}" type="text" class=" form-control-plaintext" name="nik" readonly>
@@ -74,6 +75,13 @@
                         </div>
                     </div>
                 </div>
+                {{-- bs5-form-textarea --}}
+                <div class="mb-3">
+                  <label for="jalan" class="form-label">Jalan</label>
+                  <textarea class="form-control" name="jalan" id="jalan" rows="3"></textarea>
+                </div>
+                {{-- bs5-form-submit --}}
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>

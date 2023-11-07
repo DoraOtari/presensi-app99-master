@@ -39,6 +39,7 @@
                             @else
                             <td scope="row"><img class="rounded-circle" src="https://picsum.photos/id/{{ $key }}/40"></td>
                             @endif
+                            <td>{{ $item->nik }}</td>
                             <td>{{ $item->nama }}</td>
                             <td>{{ $item->jabatan->nama }}</td>
                             <td>{{ $item->user->email }}</td>

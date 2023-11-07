@@ -59,7 +59,7 @@ class KaryawanController extends Controller
      */
     public function show(Karyawan $karyawan)
     {
-        //
+        return view('karyawan.show', compact('karyawan'));
     }
 
     /**

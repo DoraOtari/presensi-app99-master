@@ -14,7 +14,9 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        return view('karyawan.index',['karyawan' => Karyawan::all()]);
+        return view('karyawan.index',[
+            'karyawan' => Karyawan::with(['jabatan','user'])->get()
+        ]);
     }
 
     /**

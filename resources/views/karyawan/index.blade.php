@@ -34,11 +34,14 @@
                         {{-- b:foreach --}}
                         @foreach ($karyawan as $key => $item)
                         <tr class="">
+                            @if ($item->user->foto_profil)
+                            <td scope="row"><img width="40" class="rounded-circle" src='{{ asset("image/".$item->user->foto_profil) }}'></td>
+                            @else
                             <td scope="row"><img class="rounded-circle" src="https://picsum.photos/id/{{ $key }}/40"></td>
-                            <td>{{ $item->nik }}</td>
+                            @endif
                             <td>{{ $item->nama }}</td>
-                            <td>{{ $item->jabatan }}</td>
-                            <td>{{ $item->email }}</td>
+                            <td>{{ $item->jabatan->nama }}</td>
+                            <td>{{ $item->user->email }}</td>
                             <td>
                                 <a class="btn btn-outline-primary" href='{{ url("karyawan/$item->id") }}'>
                                     <i class="bi-eye"></i>

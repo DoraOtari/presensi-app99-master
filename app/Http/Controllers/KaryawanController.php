@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jabatan;
 use App\Models\Karyawan;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class KaryawanController extends Controller
@@ -26,7 +28,10 @@ class KaryawanController extends Controller
      */
     public function create()
     {
-        //
+        return view('karyawan.create', [
+            'jabatan' => Jabatan::all(),
+            'user' => User::all(),
+        ]);
     }
 
     /**
@@ -70,7 +75,11 @@ class KaryawanController extends Controller
      */
     public function edit(Karyawan $karyawan)
     {
-        //
+        return view('karyawan.edit', [
+            'karyawan' => $karyawan,
+            'jabatan'  => Jabatan::all(),
+            'user'     => User::all(),
+        ]);
     }
 
     /**
@@ -93,6 +102,7 @@ class KaryawanController extends Controller
      */
     public function destroy(Karyawan $karyawan)
     {
-        //
+        Karyawan::destroy($karyawan->id);
+        return redirect('/karyawan')->with('pesan', "Berhasil hapus karyawan $karyawan->nama");
     }
 }

@@ -46,5 +46,5 @@ Route::post('profil', function(){
 });
 
 Route::resource('jabatan', JabatanController::class);
-Route::get('/karyawan/buat', Create::class);
+
 Route::resource('/karyawan',KaryawanController::class);

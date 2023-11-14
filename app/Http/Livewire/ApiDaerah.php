@@ -7,8 +7,16 @@ use Illuminate\Support\Facades\Http;
 
 class ApiDaerah extends Component
 {
-    public $provinsi_id;
+    public $provinsi_id, $kota_id;
     
+    public function mount($karyawan = null)
+    {
+        if ($karyawan != null) {
+            $this->provinsi_id = $karyawan->provinsi;
+            $this->kota_id = $karyawan->kota;
+        }
+    }
+
     public function provinsi()
     {
         $prov = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/provinces.json');

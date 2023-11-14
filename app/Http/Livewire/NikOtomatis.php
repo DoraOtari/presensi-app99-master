@@ -8,6 +8,14 @@ use Livewire\Component;
 class NikOtomatis extends Component
 {
     public $tgl_lahir, $user_id;
+
+    public function mount($karyawan = null)
+    {
+        if ($karyawan != null) {
+            $this->tgl_lahir = $karyawan->tgl_lahir;
+            $this->user_id = $karyawan->user_id;
+        }
+    }
     
     public function buatNik()
     {

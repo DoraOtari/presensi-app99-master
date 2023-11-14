@@ -13,7 +13,7 @@
         <div class="card-body">
             <h4 class="card-title"><i class="bi-karyawan"></i> Data Karyawan</h4>
             <p class="card-text">data karyawan yang telah dibuat</p>
-            <a class="btn btn-primary" href="{{ url('karyawan/buat') }}"><i class="bi-plus"></i> Buat</a>
+            <a class="btn btn-primary" href="{{ url('karyawan/create') }}"><i class="bi-plus"></i> Buat</a>
             <hr>
             {{-- bs5-table-default --}}
             <div class="table-responsive">

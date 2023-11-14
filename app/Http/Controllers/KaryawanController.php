@@ -91,7 +91,18 @@ class KaryawanController extends Controller
      */
     public function update(Request $request, Karyawan $karyawan)
     {
-        //
+        Karyawan::where('id', $karyawan->id)->update([
+            "nik" => $request->nik,
+            "nama" => $request->nama,
+            "tgl_lahir" => $request->tgl_lahir,
+            "kelamin" => $request->kelamin,
+            "jabatan_id" => $request->jabatan_id,
+            "user_id" => $request->user_id,
+            "provinsi" => $request->provinsi,
+            "kota" => $request->kota,
+            "alamat" => $request->alamat,
+        ]);
+        return redirect('karyawan')->with('pesan', "berhasil update karyawan $request->nama");
     }
 
     /**

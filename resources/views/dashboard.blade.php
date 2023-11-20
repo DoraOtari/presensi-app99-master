@@ -1,5 +1,5 @@
 <x-template>
-    <div class="row justify-content-center mt-5">
+    <div class="row justify-content-center mt-md-5 mx-0">
         <div class="col-lg-5">
             <h3 class="my-0"><i class="bi bi-webcam"></i> Presensi App</h3>
             <h1 class="display-3 my-0">THE PRODUCTIVITY</h1>

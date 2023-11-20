@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

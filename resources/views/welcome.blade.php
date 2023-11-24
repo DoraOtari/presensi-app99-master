@@ -14,8 +14,8 @@
     <script language="JavaScript">
         Webcam.set({
             flip_horiz:true,
-            height:320,
-            width:480,
+            height:200,
+            width:320,
         })
 
 		Webcam.attach( '#my_camera' );
@@ -62,31 +62,37 @@
         </script>
 @endpush
 <x-template>
+    @if (session('pesan'))
+        <div class="alert alert-success" role="alert">
+            <strong><i class="bi-bell"></i></strong> {{ session('pesan') }}
+        </div>
+    @endif
     <div class="card col-md-6 mx-md-auto border-0">
         <div class="card-body">
-            <div class="mx-auto" id="my_camera" ></div>
-            <input type="hidden" readonly name="foto" id="hasil_foto">
-            <div class="d-flex justify-content-evenly my-3">
-                <button id="reset" type="button" class="btn btn-lg btn-outline-success"><i class="bi-arrow-counterclockwise"></i></button>
-                <button id="capture" type="button" class="btn btn-lg btn-success"><i class="bi-camera-fill"></i></button>
-            </div>
-            {{-- bs5-form-radio-inline --}}
-            <label for="" class="form-label">Keterangan</label>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="keterangan" checked value="masuk">
-                <label class="form-check-label" for="">Masuk</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="keterangan" value="pulang">
-                <label class="form-check-label" for="">Pulang</label>
-            </div>
-            <div id="map" style="height: 200px"></div>
-            <input type="text" id="lokasi" name="lokasi" readonly>
-            <section class="text-end">
-                <button type="submit" class="btn btn-dark">Submit</button>
-            </section>
+            <form action="{{ url('presensi') }}" method="post">
+                @csrf
+                <div class="mx-auto col-12" id="my_camera" ></div>
+                <input type="hidden" readonly name="foto" id="hasil_foto">
+                <div class="d-flex justify-content-evenly my-3">
+                    <button id="reset" type="button" class="btn btn-lg btn-outline-success"><i class="bi-arrow-counterclockwise"></i></button>
+                    <button id="capture" type="button" class="btn btn-lg btn-success"><i class="bi-camera-fill"></i></button>
+                </div>
+                <label for="" class="form-label">Keterangan</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="keterangan" checked value="masuk">
+                    <label class="form-check-label" for="">Masuk</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="keterangan" value="pulang">
+                    <label class="form-check-label" for="">Pulang</label>
+                </div>
+                <div id="map" style="height: 200px"></div>
+                <input type="hidden" id="lokasi" name="lokasi" readonly>
+                <section class="text-end">
+                    <button type="submit" class="btn btn-dark">Submit</button>
+                </section>
+            </form>
         </div>
         </div>
     </div>
- 
 </x-template>

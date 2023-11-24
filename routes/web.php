@@ -1,11 +1,15 @@
 <?php
 
-use App\Http\Controllers\JabatanController;
-use App\Http\Controllers\KaryawanController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Livewire\Karyawan\Create;
-use Illuminate\Support\Facades\Route;
+use App\Models\Kehadiran;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\KaryawanController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,3 +52,33 @@ Route::post('profil', function(){
 Route::resource('jabatan', JabatanController::class);
 
 Route::resource('/karyawan',KaryawanController::class);
+
+Route::post('/presensi', function (Request $req) {
+
+    $foto64 = explode(',', $req->foto)[1];
+    $namaFoto = uniqid().'.jpg';
+    $lokasiFoto = 'foto absen/'.$namaFoto;
+    $foto = base64_decode($foto64);
+    $waktu = date('d-m-Y');
+    list($tgl, $bln, $thn) = explode('-', $waktu);
+    if ($req->keterangan == 'masuk') {
+        $foto_presensi = 'foto_presensi_masuk';
+        $waktu_presensi = 'waktu_presensi_masuk';
+    } else {
+        $foto_presensi = 'foto_presensi_keluar';
+        $waktu_presensi = 'waktu_presensi_keluar';
+    }
+    Kehadiran::create(
+        [
+            'user_id'         => Auth::user()->id,
+            $foto_presensi    => $lokasiFoto,
+            'tgl'             => $tgl,
+            'bln'             => $bln,
+            'thn'             => $thn,
+            $waktu_presensi   => date('H.i'),
+            'lokasi'          => $req->lokasi,
+        ]
+        );
+    Storage::put($lokasiFoto, $foto);
+    return redirect('/')->with('pesan', "Berhasil absen $req->keterangan");
+});

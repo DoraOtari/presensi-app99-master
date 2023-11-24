@@ -61,9 +61,9 @@
         </div>
       </nav>
       {{ $slot }}
-      <a href="" class="btn btn-lg btn-primary bg-gradient rounded-circle shadow position-absolute end-0 bottom-0 me-4 mb-4">
+      {{-- <a href="" class="btn btn-lg btn-primary bg-gradient rounded-circle shadow position-absolute end-0 bottom-0 me-4 mb-4">
         <i class="bi-camera"></i>
-      </a>
+      </a> --}}
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>

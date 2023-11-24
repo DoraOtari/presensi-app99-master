@@ -11,4 +11,9 @@ class Kehadiran extends Model
     protected $table = 'kehadiran';
     protected $guarded = ['id'];
     public $timestamps = false;
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

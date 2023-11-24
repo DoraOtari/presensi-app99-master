@@ -55,6 +55,7 @@ Route::resource('/karyawan',KaryawanController::class);
 
 Route::post('/presensi', function (Request $req) {
 
+    // dd($req->all());
     $foto64 = explode(',', $req->foto)[1];
     $namaFoto = uniqid().'.jpg';
     $lokasiFoto = 'foto absen/'.$namaFoto;
@@ -68,17 +69,35 @@ Route::post('/presensi', function (Request $req) {
         $foto_presensi = 'foto_presensi_keluar';
         $waktu_presensi = 'waktu_presensi_keluar';
     }
-    Kehadiran::create(
-        [
-            'user_id'         => Auth::user()->id,
-            $foto_presensi    => $lokasiFoto,
-            'tgl'             => $tgl,
-            'bln'             => $bln,
-            'thn'             => $thn,
-            $waktu_presensi   => date('H.i'),
-            'lokasi'          => $req->lokasi,
-        ]
-        );
+
+    if ($req->keterangan == 'masuk') {
+        Kehadiran::create(
+            [
+                'user_id'         => Auth::user()->id,
+                $foto_presensi    => $lokasiFoto,
+                'tgl'             => $tgl,
+                'bln'             => $bln,
+                'thn'             => $thn,
+                $waktu_presensi   => date('H.i'),
+                'lokasi'          => $req->lokasi,
+            ]
+            );
+    } else {
+    
+        Kehadiran::where('user_id', Auth::user()->id)
+            ->where('tgl', $req->tgl)->update(
+            [
+                $foto_presensi    => $lokasiFoto,
+                $waktu_presensi   => date('H.i'),
+
+            ]
+            );
+    }
+    
     Storage::put($lokasiFoto, $foto);
     return redirect('/')->with('pesan', "Berhasil absen $req->keterangan");
+});
+
+Route::get('/absensi', function(){
+    return view('absensi.riwayat', ['kehadiran' => Kehadiran::with('user')->get()]);
 });

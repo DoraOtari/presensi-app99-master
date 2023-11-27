@@ -55,43 +55,35 @@ Route::resource('/karyawan',KaryawanController::class);
 
 Route::post('/presensi', function (Request $req) {
 
-    // dd($req->all());
     $foto64 = explode(',', $req->foto)[1];
     $namaFoto = uniqid().'.jpg';
     $lokasiFoto = 'foto absen/'.$namaFoto;
     $foto = base64_decode($foto64);
     $waktu = date('d-m-Y');
     list($tgl, $bln, $thn) = explode('-', $waktu);
-    if ($req->keterangan == 'masuk') {
-        $foto_presensi = 'foto_presensi_masuk';
-        $waktu_presensi = 'waktu_presensi_masuk';
-    } else {
-        $foto_presensi = 'foto_presensi_keluar';
-        $waktu_presensi = 'waktu_presensi_keluar';
-    }
 
     if ($req->keterangan == 'masuk') {
         Kehadiran::create(
             [
-                'user_id'         => Auth::user()->id,
-                $foto_presensi    => $lokasiFoto,
-                'tgl'             => $tgl,
-                'bln'             => $bln,
-                'thn'             => $thn,
-                $waktu_presensi   => date('H.i'),
-                'lokasi'          => $req->lokasi,
+                'user_id'               => Auth::user()->id,
+                'foto_presensi_masuk'   => $lokasiFoto,
+                'tgl'                   => $tgl,
+                'bln'                   => $bln,
+                'thn'                   => $thn,
+                'waktu_presensi_masuk'  => date('H.i'),
+                'lokasi'                => $req->lokasi,
             ]
             );
     } else {
-    
-        Kehadiran::where('user_id', Auth::user()->id)
-            ->where('tgl', $req->tgl)->update(
+        $karyawan = Kehadiran::where('user_id', Auth::user()->id)->orderBy('id','desc')->first();
+        $tes = Kehadiran::where('id', $karyawan->id)->where('tgl', $tgl)->update(
             [
-                $foto_presensi    => $lokasiFoto,
-                $waktu_presensi   => date('H.i'),
-
-            ]
+                'foto_presensi_keluar'    => $lokasiFoto,
+                'waktu_presensi_keluar'   => date('H.i'),
+                
+                ]
             );
+            // dd($tes);
     }
     
     Storage::put($lokasiFoto, $foto);

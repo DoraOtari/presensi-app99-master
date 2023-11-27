@@ -38,6 +38,10 @@
                 <li class="nav-item">
                   <a class="nav-link {{ Request::is('karyawan*') ? 'active' : '' }}" href="{{ url('karyawan') }}"><i class="bi bi-people"></i> Karyawan</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link {{ Request::is('absensi*') ? 'active' : '' }}" href="{{ url('absensi') }}">
+                    <i class="bi bi-calendar"></i> Riwayat Absensi</a>
+                </li>
   
               </ul>
               <div id="profil" class="d-flex gap-2">

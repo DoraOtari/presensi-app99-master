@@ -14,7 +14,7 @@
                         <th scope="col">Lokasi</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="table-group-divider">
                     @foreach ($kehadiran as $item)
                         <tr class="">
                             <td scope="row">{{ $loop->iteration }}.</td>

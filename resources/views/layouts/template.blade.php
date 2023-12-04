@@ -12,9 +12,9 @@
     @stack('styleku')
   </head>
   <body>
-    <main id="isi konten" class="vh-100 position-relative">
+    <main id="isi konten" class="vh-100 position-relative p-0" style="overflow-x: hidden">
       <nav class="navbar bg-body-white navbar-expand-lg">
-        <div class="container-fluid">
+        <div class="container-fluid px-0">
           <a class="navbar-brand" href="#"><i class="bi bi-webcam"></i> Presensi App</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
